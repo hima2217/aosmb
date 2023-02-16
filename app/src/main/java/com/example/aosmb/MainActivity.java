@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MyApp";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+        Log.i(TAG, "Здравствуйте!!!");
     }
     @Override
     protected void onStart() {
@@ -25,15 +28,23 @@ public class MainActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+        Log.w(TAG, "Приложение запущено некорректно");
     }
     @Override
     protected void onStop() {
         super.onStop();
+        try{
         Context context = getApplicationContext();
         CharSequence text = "Stop Application!";
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+        Log.e(TAG, "Ошибка, приложение остановлено");
+        }
+        catch (Exception exception) {
+            Log.e(TAG, "Получено исключение", exception);
+        }
+
     }
     @Override
     protected void onDestroy() {
@@ -43,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+        Log.v(TAG, "Подробности закрытия приложения");
     }
     @Override
     protected void onPause() {
@@ -52,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+        Log.d(TAG, "onPause");
     }
     @Override
     protected void onResume() {
@@ -61,5 +74,6 @@ public class MainActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+        Log.d(TAG, "onResume");
     }
 }
