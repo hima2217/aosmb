@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
 
@@ -13,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        EditText textView= (EditText) findViewById(R.id.editTextTextPersonName2);
         Context context = getApplicationContext();
         CharSequence text = "Create Application!";
         int duration = Toast.LENGTH_SHORT;
