@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,12 +20,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
         EditText textView= (EditText) findViewById(R.id.editTextTextPersonName2);
-        Context context = getApplicationContext();
-        CharSequence text = "Create Application!";
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-        Log.i(TAG, "Здравствуйте!!!");
+
+        Button button = (Button) findViewById(R.id.button);
+
+        View.OnClickListener listener=new View.OnClickListener() {
+            @Override
+            public void onClick(View V){
+                Context context = getApplicationContext();
+                CharSequence text = "Вход!!!";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                Log.i(TAG, "Здравствуйте!!!");
+            }
+
+
+        };
     }
     @Override
     protected void onStart() {
