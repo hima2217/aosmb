@@ -3,6 +3,7 @@ package com.example.aosmb;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -82,6 +83,18 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
         Log.d(TAG, "onPause");
+    }
+    public void OnClick1(View view){
+        Context context = getApplicationContext();
+        CharSequence text = "SecondActivity!!!";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+        Log.i(TAG, "Здравствуйте!!!");
+        Intent intent = new Intent(this, SecondActivity.class);
+        intent.putExtra("onClick1", "Works!");
+        startActivity(intent);
+        
     }
     @Override
     protected void onResume() {
