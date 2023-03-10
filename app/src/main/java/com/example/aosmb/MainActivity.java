@@ -22,6 +22,12 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
         EditText textView= (EditText) findViewById(R.id.editTextTextPersonName2);
 
+        imageView.setImageResource(R.drawable.logo);
+        textView.setText(R.string.passwordd);
+
+
+
+
         Button button = (Button) findViewById(R.id.button);
 
         View.OnClickListener listener=new View.OnClickListener() {
