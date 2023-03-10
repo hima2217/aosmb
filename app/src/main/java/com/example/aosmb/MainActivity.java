@@ -1,5 +1,9 @@
 package com.example.aosmb;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -14,6 +18,17 @@ import android.widget.Toast;
 import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
+EditText textView;
+    ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    Intent data = result.getData();
+
+                    textView.setText(data.getStringExtra("string"));
+                }
+            });
     private static final String TAG = "MyApp";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
         imageView.setImageResource(R.drawable.logo);
         textView.setText(R.string.passwordd);
-
 
 
 
@@ -91,12 +105,12 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onPause");
     }
     public void OnClick1(View view){
+        Log.i(TAG, "Здравствуйте!!!");
         Context context = getApplicationContext();
         CharSequence text = "SecondActivity!!!";
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
-        Log.i(TAG, "Здравствуйте!!!");
         Intent intent = new Intent(this, SecondActivity.class);
         intent.putExtra("onClick1", "Works!");
         startActivity(intent);
@@ -111,5 +125,8 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
         Log.d(TAG, "onResume");
+    }
+    public void onClickk(View V){
+        Log.d(TAG, "hi!!!");
     }
 }
